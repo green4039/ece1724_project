@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>FinTrack Documentation</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Backend Documentation";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> FinTrack Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Backend Documentation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#table-of-contents">📚 Table of Contents</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#api">🌐 API</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#authentication">🔐 Authentication</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#account-management">📘 Account Management</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#category-management">📦 Category Management</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#transaction-management">💸 Transaction Management</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#postman-api-testing">📮 Postman API Testing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#quick-start">⚡ Quick Start</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#clone-the-project">🔥 Clone the project</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#install-virtual-environment">📦 Install Virtual Environment</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#go-to-the-documentation-directory">📁 Go to the Documentation Directory</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#modify-md-files-in-docs">📝 Modify .md files in docs/</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#build-and-deploy">🚀 Build and Deploy</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#database-schema">🗄️ Database Schema</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#project-layout">🗂️ Project Layout</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-add-a-new-module">🛠️ How to Add a New Module</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-create-the-new-module">1️⃣ Create the New Module</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-define-the-database-schema">2️⃣ Define the Database Schema</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-add-business-logic">3️⃣ Add Business Logic</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-register-routes">4️⃣ Register Routes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5-update-mainrs">5️⃣ Update main.rs</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="frontend/">TUI Frontend Documentation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="authentication/">Authentication</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="account/">Account Management</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="category/">Category Management</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="transaction/">Transaction Management</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="database/">Database Schema</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">FinTrack Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Backend Documentation</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <pre class="codehilite"><code class="language-text"> ______  __  __   __  ______  ______  ______  ______  __  __    
+/\  ___\/\ \/\ &quot;-.\ \/\__  _\/\  == \/\  __ \/\  ___\/\ \/ /    
+\ \  __\\ \ \ \ \-.  \/_/\ \/\ \  __&lt;\ \  __ \ \ \___\ \  _&quot;-.  
+ \ \_\   \ \_\ \_\\&quot;\_\ \ \_\ \ \_\ \_\ \_\ \_\ \_____\ \_\ \_\ 
+  \/_/    \/_/\/_/ \/_/  \/_/  \/_/ /_/\/_/\/_/\/_____/\/_/\/_/
+</code></pre>
+
+<hr />
+<h1 id="backend-documentation">🚀 <strong>Backend Documentation</strong><a class="headerlink" href="#backend-documentation" title="Permanent link">&para;</a></h1>
+<p>This documentation outlines the backend structure, API endpoints, project layout, and the process for updating and deploying the documentation. The backend is built with <strong>Rust Rocket</strong> for REST API handling, <strong>Diesel</strong> for database interaction, and <strong>PostgreSQL</strong> for persistent storage.</p>
+<hr />
+<h2 id="table-of-contents">📚 <strong>Table of Contents</strong><a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#-api">🌐 API</a><ul>
+<li><a href="#authentication">🔐 Authentication</a></li>
+<li><a href="#account-management">📘 Account Management</a></li>
+<li><a href="#category-management">📦 Category Management</a></li>
+<li><a href="#transaction-management">💸 Transaction Management</a></li>
+</ul>
+</li>
+<li><a href="#-postman-api-testing">📮 Postman API Testing</a></li>
+<li><a href="#-quick-start">⚡ Quick Start</a></li>
+<li><a href="#-database-schema">🗄️ Database Schema</a></li>
+<li><a href="#-project-layout">🗂️ Project Layout</a></li>
+<li><a href="#%EF%B8%8F-how-to-add-a-new-module">🛠️ How to Add a New Module</a></li>
+</ol>
+<hr />
+<h2 id="api">🌐 <strong>API</strong><a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="authentication">🔐 <strong>Authentication</strong><a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>API</strong></th>
+<th><strong>Status</strong></th>
+<th><strong>Time Finished</strong></th>
+<th><strong>Link to Docs</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/signup</code></td>
+<td>✅ Complete</td>
+<td>2024-12-07 2:00pm</td>
+<td><a href="authentication/#signup-post">View Docs</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="account-management">📘 <strong>Account Management</strong><a class="headerlink" href="#account-management" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>API</strong></th>
+<th><strong>Status</strong></th>
+<th><strong>Time Finished</strong></th>
+<th><strong>Link to Docs</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/account_create</code></td>
+<td>✅ Complete</td>
+<td>2024-12-07 3:10pm</td>
+<td><a href="account/#create-new-account-for-user-post">View Docs</a></td>
+</tr>
+<tr>
+<td><code>/account_summary?email=&lt;&gt;</code></td>
+<td>✅ Complete</td>
+<td>2024-12-07 3:40pm</td>
+<td><a href="account/#get-account-overview-for-user-get">View Docs</a></td>
+</tr>
+<tr>
+<td><code>/delete_account?email=&lt;&gt;&amp;account_name=&lt;&gt;</code></td>
+<td>✅ Complete</td>
+<td>2024-12-07 4:20pm</td>
+<td><a href="account/#delete-an-account-for-user-delete">View Docs</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="category-management">📦 <strong>Category Management</strong><a class="headerlink" href="#category-management" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>API</strong></th>
+<th><strong>Status</strong></th>
+<th><strong>Time Finished</strong></th>
+<th><strong>Link to Docs</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/category_create</code></td>
+<td>✅ Complete</td>
+<td>2024-12-07</td>
+<td><a href="category/#create-new-category-post">View Docs</a></td>
+</tr>
+<tr>
+<td><code>/category_summary?email=&lt;&gt;</code></td>
+<td>✅ Complete</td>
+<td>2024-12-07</td>
+<td><a href="category/#get-category-overview-for-user-get">View Docs</a></td>
+</tr>
+<tr>
+<td><code>/delete_category?email=&lt;&gt;&amp;category_nickname=&lt;&gt;</code></td>
+<td>✅ Complete</td>
+<td>2024-12-07</td>
+<td><a href="category/#delete-a-category-for-user-delete">View Docs</a></td>
+</tr>
+<tr>
+<td><code>/category_update?email=&lt;&gt;&amp;field=&lt;field_to_update&gt;&amp;category_nickname=&lt;&gt;&amp;new_value=&lt;&gt;</code></td>
+<td>✅ Complete</td>
+<td>2024-12-07</td>
+<td><a href="category/#update-a-category-for-user-update">View Docs</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="transaction-management">💸 <strong>Transaction Management</strong><a class="headerlink" href="#transaction-management" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>API</strong></th>
+<th><strong>Status</strong></th>
+<th><strong>Time Finished</strong></th>
+<th><strong>Link to Docs</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/add_trans</code></td>
+<td>✅ Complete</td>
+<td>2024-12-12</td>
+<td><a href="transaction/#create-new-transaction-post">View Docs</a></td>
+</tr>
+<tr>
+<td><code>/delete_trans?&lt;delete_query..&gt;</code></td>
+<td>✅ Complete</td>
+<td>2024-12-12</td>
+<td><a href="transaction/#delete-transaction-delete">View Docs</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="postman-api-testing">📮 <strong>Postman API Testing</strong><a class="headerlink" href="#postman-api-testing" title="Permanent link">&para;</a></h2>
+<p>To explore and test the API endpoints, you can check out the Postman API documentation <a href="https://web.postman.co/workspace/46a5447a-bfb7-47fa-8a8b-0da03a25416e/collection/40276125-9521e786-da55-44fd-9b33-98f4b67d293e">here</a> (localhost version).</p>
+<hr />
+<h2 id="quick-start">⚡ <strong>Quick Start</strong><a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<h3 id="clone-the-project">🔥 <strong>Clone the project</strong><a class="headerlink" href="#clone-the-project" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-bash">git clone https://github.com/FinTrak-Solutions/Backend.git
+</code></pre>
+
+<hr />
+<h3 id="install-virtual-environment">📦 <strong>Install Virtual Environment</strong><a class="headerlink" href="#install-virtual-environment" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-bash">cd Backend
+virtualenv venv
+source venv/bin/activate
+pip3 install mkdocs
+</code></pre>
+
+<hr />
+<h3 id="go-to-the-documentation-directory">📁 <strong>Go to the Documentation Directory</strong><a class="headerlink" href="#go-to-the-documentation-directory" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-bash">cd Documentation
+</code></pre>
+
+<hr />
+<h3 id="modify-md-files-in-docs">📝 <strong>Modify <code>.md</code> files in <code>docs/</code></strong><a class="headerlink" href="#modify-md-files-in-docs" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-bash"># Check and update locally
+mkdocs serve
+# Modify .md files in the docs/ folder
+</code></pre>
+
+<hr />
+<h3 id="build-and-deploy">🚀 <strong>Build and Deploy</strong><a class="headerlink" href="#build-and-deploy" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-bash"># Build and deploy
+mkdocs build
+mkdocs gh-deploy
+</code></pre>
+
+<hr />
+<h2 id="database-schema">🗄️ <strong>Database Schema</strong><a class="headerlink" href="#database-schema" title="Permanent link">&para;</a></h2>
+<p>📘 Full details about the <strong>Database Schema</strong> can be found <a href="database/">here</a>.</p>
+<hr />
+<h2 id="project-layout">🗂️ <strong>Project Layout</strong><a class="headerlink" href="#project-layout" title="Permanent link">&para;</a></h2>
+<p>Here is the visualized structure of the <code>src</code> directory for the backend.</p>
+<pre class="codehilite"><code>src
+├── db.rs  -- 🗄️ Handles database setup and connections
+├── handlers -- 🛠️ Controllers for handling business logic
+│   ├── account_handler.rs  -- 📘 Handles account-related logic
+│   ├── auth_handler.rs  -- 🔐 Handles user authentication logic
+│   ├── category_handler.rs  -- 📦 Handles category-related logic
+│   └── mod.rs  -- 📦 Module declaration file for handlers
+├── main.rs  -- 🚀 The main entry point for the backend application
+├── models -- 📦 Data models that map to the database schema
+│   ├── account.rs  -- 📘 Account model
+│   ├── category.rs  -- 📦 Category model
+│   ├── mod.rs  -- 📦 Module declaration file for models
+│   ├── transaction.rs  -- 💸 Transaction model
+│   └── user.rs  -- 🔐 User model
+├── routes -- 🌐 Defines the routes for the API endpoints
+│   ├── account.rs  -- 📘 Account-related API routes
+│   ├── auth.rs  -- 🔐 Authentication-related API routes
+│   ├── category.rs  -- 📦 Category-related API routes
+│   ├── mod.rs  -- 📦 Module declaration file for routes
+│   └── transaction.rs  -- 💸 Transaction-related API routes
+└── schema.rs  -- 📘 Automatically generated schema file for Diesel
+</code></pre>
+
+<hr />
+<h2 id="how-to-add-a-new-module">🛠️ <strong>How to Add a New Module</strong><a class="headerlink" href="#how-to-add-a-new-module" title="Permanent link">&para;</a></h2>
+<p>Want to add a new module (like <code>transaction</code> or <code>budget</code>)? Follow these steps to ensure a consistent, clean structure.</p>
+<h3 id="1-create-the-new-module">1️⃣ <strong>Create the New Module</strong><a class="headerlink" href="#1-create-the-new-module" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Create a new folder in <code>src/handlers/</code>, <code>src/models/</code>, and <code>src/routes/</code> for your new module.</li>
+</ol>
+<pre class="codehilite"><code class="language-bash">   touch src/handlers/new_module_handler.rs
+   touch src/models/new_module.rs
+   touch src/routes/new_module.rs
+</code></pre>
+
+<ol>
+<li>Add the new module to the <code>mod.rs</code> files in each of these folders.</li>
+</ol>
+<p><strong>src/handlers/mod.rs</strong></p>
+<pre class="codehilite"><code class="language-rust">pub mod new_module_handler;
+</code></pre>
+
+<p><strong>src/models/mod.rs</strong></p>
+<pre class="codehilite"><code class="language-rust">pub mod new_module;
+</code></pre>
+
+<p><strong>src/routes/mod.rs</strong></p>
+<pre class="codehilite"><code class="language-rust">pub mod new_module;
+</code></pre>
+
+<hr />
+<h3 id="2-define-the-database-schema">2️⃣ <strong>Define the Database Schema</strong><a class="headerlink" href="#2-define-the-database-schema" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Add the table to the <code>schema.rs</code> file if it doesn't exist.</li>
+<li>Run Diesel to generate the schema for the new table:</li>
+</ol>
+<pre class="codehilite"><code class="language-bash">   diesel migration generate create_new_module
+</code></pre>
+
+<hr />
+<h3 id="3-add-business-logic">3️⃣ <strong>Add Business Logic</strong><a class="headerlink" href="#3-add-business-logic" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Add business logic to <code>new_module_handler.rs</code>.</li>
+<li>Implement CRUD functions like <code>create</code>, <code>read</code>, <code>update</code>, <code>delete</code>.</li>
+</ol>
+<hr />
+<h3 id="4-register-routes">4️⃣ <strong>Register Routes</strong><a class="headerlink" href="#4-register-routes" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Add routes for the new module in <code>routes/new_module.rs</code>.</li>
+<li>Use <code>Rocket</code> to define <code>GET</code>, <code>POST</code>, <code>PUT</code>, and <code>DELETE</code> endpoints.</li>
+</ol>
+<p><strong>Example Route in <code>src/routes/new_module.rs</code>:</strong></p>
+<pre class="codehilite"><code class="language-rust">use rocket::{get, post};
+
+#[get(&quot;/new_module&quot;)]
+pub fn get_new_module() -&gt; &amp;'static str {
+    &quot;Get all new module items&quot;
+}
+
+#[post(&quot;/new_module&quot;)]
+pub fn create_new_module() -&gt; &amp;'static str {
+    &quot;Create a new module item&quot;
+}
+</code></pre>
+
+<hr />
+<h3 id="5-update-mainrs">5️⃣ <strong>Update main.rs</strong><a class="headerlink" href="#5-update-mainrs" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Add the new module's route to the <code>main.rs</code> file.</li>
+<li>Register the routes with <code>Rocket</code>.</li>
+</ol>
+<p><strong>src/main.rs</strong></p>
+<pre class="codehilite"><code class="language-rust">#[macro_use] extern crate rocket;
+
+mod routes;
+
+#[launch]
+fn rocket() -&gt; _ {
+    rocket::build()
+        .mount(&quot;/&quot;, routes![
+            routes::new_module::get_new_module,
+            routes::new_module::create_new_module,
+        ])
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="frontend/" class="btn btn-neutral float-right" title="TUI Frontend Documentation">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="frontend/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2024-12-13 15:29:36.681744+00:00
+-->

@@ -1,0 +1,19 @@
+site_name: FinTrack Documentation
+
+nav:
+  - Backend Documentation: index.md
+  - TUI Frontend Documentation: frontend.md
+  - Authentication: authentication.md
+  - Account Management: account.md
+  - Category Management: category.md
+  - Transaction Management: transaction.md
+  - Database Schema: database.md
+
+theme: readthedocs
+
+markdown_extensions:
+  - admonition                      # Adds support for `!!! note`, `!!! tip`, etc.
+  - codehilite                      # Syntax highlighting for code blocks
+  - footnotes                       # Support for footnotes
+  - toc:
+      permalink: true               # Adds permalinks for table of contents headings

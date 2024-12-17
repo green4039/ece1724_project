@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Database Schema - FinTrack Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Database Schema";
+        var mkdocs_page_input_path = "database.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> FinTrack Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Backend Documentation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../frontend/">TUI Frontend Documentation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../authentication/">Authentication</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../account/">Account Management</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../category/">Category Management</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../transaction/">Transaction Management</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Database Schema</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of Contents</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#user-table">User Table</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#description">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#schema">Schema</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#account-table">Account Table</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#description_1">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#schema_1">Schema</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#transaction-table">Transaction Table</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#description_2">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#schema_2">Schema</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#category-table">Category Table</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#description_3">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#schema_3">Schema</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary-of-updates">Summary of Updates</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">FinTrack Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Database Schema</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="database-schema-documentation">Database Schema Documentation<a class="headerlink" href="#database-schema-documentation" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>This document outlines the updated database schema for the financial tracker application backend, utilizing Rust Rocket for REST API handling, Diesel for database interaction, and PostgreSQL as the database. The schema is designed to efficiently store and manage <code>user information</code>, <code>financial accounts</code>, <code>transactions</code>, <code>budgets</code>, and <code>categories</code>, ensuring data scalability and consistency.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#user-table">User Table</a></li>
+<li><a href="#account-table">Account Table</a></li>
+<li><a href="#transaction-table">Transaction Table</a></li>
+<li><a href="#category-table">Category Table</a></li>
+<li><a href="#summary-of-updates">Summary of Updates</a></li>
+</ol>
+<hr />
+<h2 id="user-table">User Table<a class="headerlink" href="#user-table" title="Permanent link">&para;</a></h2>
+<h3 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h3>
+<p>Stores user credentials and personal information. Each user is uniquely identified and can have multiple accounts, transactions, and categories associated with them.</p>
+<h3 id="schema">Schema<a class="headerlink" href="#schema" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Data Type</th>
+<th>Constraints</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>SERIAL</code></td>
+<td>Primary Key</td>
+<td>Unique identifier for each user.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>TEXT</code></td>
+<td>Unique, Not Null</td>
+<td>User's email address.</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td><code>TEXT</code></td>
+<td>Not Null</td>
+<td>Hashed password for security.</td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td><code>TEXT</code></td>
+<td>Not Null</td>
+<td>User's unique username.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="account-table">Account Table<a class="headerlink" href="#account-table" title="Permanent link">&para;</a></h2>
+<h3 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h3>
+<p>Represents financial accounts linked to users. Each account belongs to a user and holds financial transactions.</p>
+<h3 id="schema_1">Schema<a class="headerlink" href="#schema_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Data Type</th>
+<th>Constraints</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>account_id</code></td>
+<td><code>SERIAL</code></td>
+<td>Primary Key</td>
+<td>Unique identifier for each account.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>TEXT</code></td>
+<td>Foreign Key (<code>User.email</code>), Not Null</td>
+<td>Email of the account owner.</td>
+</tr>
+<tr>
+<td><code>account_type</code></td>
+<td><code>TEXT</code></td>
+<td>Not Null</td>
+<td>Type of the account (e.g., <code>Credit</code>, <code>Debit</code>, <code>Savings</code>).</td>
+</tr>
+<tr>
+<td><code>account_name</code></td>
+<td><code>TEXT</code></td>
+<td>Not Null</td>
+<td>A descriptive name for the account.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="transaction-table">Transaction Table<a class="headerlink" href="#transaction-table" title="Permanent link">&para;</a></h2>
+<h3 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h3>
+<p>Logs all financial transactions associated with accounts. Each transaction records details like amount, timestamp, and category.</p>
+<h3 id="schema_2">Schema<a class="headerlink" href="#schema_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Data Type</th>
+<th>Constraints</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trans_id</code></td>
+<td><code>SERIAL</code></td>
+<td>Primary Key</td>
+<td>Unique identifier for each transaction.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>TEXT</code></td>
+<td>Foreign Key (<code>User.email</code>), Not Null</td>
+<td>Email of the user linked to the transaction.</td>
+</tr>
+<tr>
+<td><code>category_id</code></td>
+<td><code>INTEGER</code></td>
+<td>Foreign Key (<code>Category.category_id</code>)</td>
+<td>Category classification for the transaction.</td>
+</tr>
+<tr>
+<td><code>amount</code></td>
+<td><code>FLOAT8</code></td>
+<td>Not Null</td>
+<td>Transaction amount (positive or negative).</td>
+</tr>
+<tr>
+<td><code>notes</code></td>
+<td><code>TEXT</code> (nullable)</td>
+<td>Optional</td>
+<td>Additional notes for the transaction.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="category-table">Category Table<a class="headerlink" href="#category-table" title="Permanent link">&para;</a></h2>
+<h3 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h3>
+<p>Provides a way to classify transactions into categories, allowing for detailed financial tracking and reporting.</p>
+<h3 id="schema_3">Schema<a class="headerlink" href="#schema_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Data Type</th>
+<th>Constraints</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category_id</code></td>
+<td><code>SERIAL</code></td>
+<td>Primary Key</td>
+<td>Unique identifier for each category.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>TEXT</code></td>
+<td>Foreign Key (<code>User.email</code>), Not Null</td>
+<td>Email of the user who owns the category.</td>
+</tr>
+<tr>
+<td><code>nickname</code></td>
+<td><code>TEXT</code></td>
+<td>Not Null</td>
+<td>A descriptive name for the category.</td>
+</tr>
+<tr>
+<td><code>category_type</code></td>
+<td><code>TEXT</code></td>
+<td>Not Null</td>
+<td>Type of category (e.g., <code>Food</code>, <code>Bills</code>).</td>
+</tr>
+<tr>
+<td><code>budget</code></td>
+<td><code>FLOAT8</code></td>
+<td>Optional</td>
+<td>Budget associated with this category.</td>
+</tr>
+<tr>
+<td><code>budget_freq</code></td>
+<td><code>TEXT</code></td>
+<td>Optional</td>
+<td>Budget frequency (<code>Daily</code>, <code>Weekly</code>, etc.).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="summary-of-updates">Summary of Updates<a class="headerlink" href="#summary-of-updates" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Primary Keys</strong>: Added <code>id</code> fields as primary keys in tables where they were missing.</li>
+<li><strong>Foreign Key Relationships</strong>:</li>
+<li><code>email</code> links multiple tables to the <code>users</code> table for referential integrity.</li>
+<li><code>category_id</code> links the <code>transactions</code> table to the <code>categories</code> table.</li>
+<li><strong>Field Updates</strong>:</li>
+<li>Added <code>account_name</code> to the <code>accounts</code> table for better account identification.</li>
+<li>Ensured foreign key constraints for better data consistency.</li>
+<li><strong>Enumerations and Constraints</strong>:</li>
+<li>Categories and budgets allow classification for better financial tracking.</li>
+<li>Transaction amounts support both positive and negative values.</li>
+<li><strong>Scalability and Performance</strong>:</li>
+<li>Schema supports detailed tracking and reporting, optimized for scalability and extensibility.</li>
+</ol>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../transaction/" class="btn btn-neutral float-left" title="Transaction Management"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../transaction/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
